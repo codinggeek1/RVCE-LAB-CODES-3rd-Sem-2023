@@ -4,58 +4,72 @@ Dictionary Tree
 #include<stdlib.h>
 #include<string.h>
 
-struct node{
+struct node
+{
 	char word[20];
 	struct node *left, *right;
 };
 
-void display(struct node *root){
-	if(root){
+void display(struct node *root)
+{
+	if(root)
+	{
 		display(root->left);
 		printf("%s\n",root->word);
 		display(root->right);
 	}
 }
 
-struct node *create(struct node *root, struct node *newnode){
+struct node *create(struct node *root, struct node *newnode)
+{
 	if(root == NULL)
 		return newnode;
 	int c = strcmp(newnode->word, root->word);
-	if(c>0){
+	if(c>0)
+	{
 		root->right = create(root->right, newnode);
 		return root;
 	}
-	else{
+	else
+	{
 		root->left = create(root->left, newnode);
 		return root;
 	}
 }
-struct node *del(struct node *root, char w[]){
+struct node *del(struct node *root, char w[])
+{
 	if(root == NULL)
 		return root;
 	int c = strcmp(root->word,w);
-	if(c>0){
+	if(c>0)
+	{
 		root->left = del(root->left,w);
 		return root;
 	}
-	else if(c<0){
+	else if(c<0)
+	{
 		root->right = del(root->right,w);
 		return root;
 	}
-	else{
-		if(root->left == NULL){
+	else
+	{
+		if(root->left == NULL)
+		{
 			struct node *temp = root->right;
 			free(root);
 			return temp;
 		}
-		else if(root->right == NULL){
+		else if(root->right == NULL)
+		{
 			struct node *temp = root->left;
 			free(root);
 			return temp;
 		}
-		else{
+		else
+		{
 			struct node *temp = root->right;
-			while(temp->left){
+			while(temp->left)
+			{
 				temp = temp->left;
 			}
 			strcpy(root->word,temp->word);
@@ -65,10 +79,12 @@ struct node *del(struct node *root, char w[]){
 	}
 }
 
-void main(){
+void main()
+{
 	char a[20];
 	struct node *root = NULL;
-	while(1){
+	while(1)
+	{
 		scanf("%s",a);
 		if ( strcmp(a ,"end") == 0 )
 			break;

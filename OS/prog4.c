@@ -24,7 +24,8 @@ void* reader(void* p)
     if(rcount==1)
         sem_wait(&wr);
     sem_post(&mutex);
-    printf("\nReader %d reads page number %d ",*i,count); sem_wait(&mutex);
+    printf("\nReader %d reads page number %d ",*i,count); 
+    sem_wait(&mutex);
     rcount--;
     if(rcount==0)
         sem_post(&wr);

@@ -19,6 +19,7 @@ SSD1306Wire display(0x3c,SCL_PIN , SDA_PIN);
 void setup()
 {
   display.init();
+  display.begin(SSD1306_SWITCHCAPVCC);
   display.flipScreenVertically();
   display.setFont(ArialMT_Plain_10);
   display.setTextAlignment(TEXT_ALIGN_LEFT);

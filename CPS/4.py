@@ -3,8 +3,8 @@ import requests
 import Adafruitat_DHT
 
 apikey = "......."
-int pin = 4
-int sensor = Adafruit_DHT.DHT11
+pin = 4
+sensor = Adafruit_DHT.DHT11
 humid = [] 
 temp = []
 

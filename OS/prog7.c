@@ -43,5 +43,5 @@ int sub(int a, int b);
 //gcc -c main.c
 //gcc -shared -o libos.so add.o sub.o
 //gcc -o dpgm main.o libos.so
-//sudo cp libos.so/ usr/lib
+//sudo cp libos.so/usr/lib
 //./dpgm
